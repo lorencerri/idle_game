@@ -37,7 +37,21 @@ fn main() {
 
     // Check if file was found
     if file.is_ok() {
-        println!("File Found!");
+
+        let mut buffer = String::new();
+        file.unwrap().read_to_string(&mut buffer);
+
+        // Parse Data
+        let data = serde_json::from_str(&buffer);
+
+        // Check if parsed correctly
+        if data.is_ok() {
+            let res: User = data.unwrap();
+            println!("Welcome back {}! You currently have ${}", res.name, res.balance);
+        } else {
+            println!("Sorry, something is wrong with your savegame!");
+        }
+
     } else { // If not, run the following
 
         // Request User Input - Name
