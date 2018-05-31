@@ -10,7 +10,7 @@ use std::fs::File;
 use std::path::Path;
 
 // Static Variables
-static DATA_FILE: &'static str = "data/data.json";
+static DATA_PATH: &'static str = "data/data.json";
 
 #[derive(Serialize, Deserialize)]
 #[derive(Debug)]
@@ -21,6 +21,18 @@ struct User {
 
 fn main() {
 
-    println!("{}", DATA_FILE);
+    // Create File Path
+    let path = Path::new(DATA_PATH);
+    let display = path.display();
+
+    // Open File
+    let mut file = File::open(&path);
+
+    // Check if file was found
+    if file.is_ok() {
+        println!("File Found!");
+    } else {
+        println!("File NOT Found!");
+    }
 
 }
