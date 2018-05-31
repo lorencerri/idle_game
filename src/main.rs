@@ -31,6 +31,7 @@ struct User {
 
 struct Game {
     gl: GlGraphics,
+    user: User,
 }
 
 fn main() {
@@ -108,7 +109,7 @@ impl Game {
     }
 
     fn update(&mut self) {
-
+        println!("{:?}", self.user);
     }
 
     fn pressed(&mut self, btn: &Button) {
@@ -136,7 +137,11 @@ fn start_game(user_info: &User) {
         .unwrap();
 
     let mut game = Game {
-        gl: GlGraphics::new(opengl)
+        gl: GlGraphics::new(opengl),
+        user: User {
+            name: user_info.name.clone(),
+            balance: user_info.balance.clone(),
+        }
     };
 
     let mut events = Events::new(EventSettings::new()).ups(10);
