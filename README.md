@@ -1,19 +1,22 @@
 **Screenshots**
+
 ![](https://i.imgur.com/4diXFZr.gif)
+
+**To Do**
+- [x] Data Saving & Fetching
+- [x] Persistent Data
+- [ ] Idle Feature / Passive Income
+- [ ] Purchaseable Upgrades
+- [ ] Prestiging
+- [ ] Multiple Worlds
+- [ ] Objectives System
+- [ ] Leveling System
+- [ ] Random Quests / Missions
+- [ ] Daily Achievements / Goals
+- [ ] Daily Rewards
+- [ ] Boosters
+- [ ] OpenGL Graphics
 
 **Creation Flow**
 1. Create game & framework in terminal
 2. Port over to OpenGL w/ graphics
-
-**Ideas**
-
-- Objectives
-- Leveling Up
-- Prestiging
-- Multiple Worlds
-- Can idle it and return and get rewarded
-- No Ads without rewards
-- Random Quests / Missions
-- Daily Achievements / Goals
-- Daily Rewards
-- Boosters
