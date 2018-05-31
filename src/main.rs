@@ -97,11 +97,11 @@ fn main() {
 
 impl Game {
     fn render(&mut self, args: &RenderArgs) {
-        use graphics::*;
+        use graphics;
 
         let BLURPLE: [f32; 4] = [0.447, 0.537, 0.854, 1.0];
 
-        self.gl.draw(arg.viewport(), |_c, gl| {
+        self.gl.draw(args.viewport(), |_c, gl| {
             graphics::clear(BLURPLE, gl);
         });
 
@@ -129,7 +129,7 @@ fn start_game(user_info: &User) {
 
     let mut window: GlutinWindow = WindowSettings::new(
         "Rust Idler",
-        [1920, 1080]
+        [1280, 720]
     ).opengl(opengl)
         .exit_on_esc(true)
         .build()
