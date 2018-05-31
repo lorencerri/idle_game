@@ -109,7 +109,7 @@ impl Game {
     }
 
     fn update(&mut self) {
-        println!("{:?}", self.user);
+
     }
 
     fn pressed(&mut self, btn: &Button) {
@@ -144,7 +144,7 @@ fn start_game(user_info: &User) {
         }
     };
 
-    let mut events = Events::new(EventSettings::new()).ups(10);
+    let mut events = Events::new(EventSettings::new()).ups(1);
     while let Some(e) = events.next(&mut window) {
 
         if let Some(r) = e.render_args() {
