@@ -2,7 +2,9 @@
 
 ![](https://i.imgur.com/4diXFZr.gif)
 
-**To Do**
+---
+
+**To-Do List**
 - [x] Data Saving & Fetching
 - [x] Persistent Data
 - [ ] Idle Feature / Passive Income
