@@ -45,6 +45,7 @@ fn main() {
         if data.is_ok() {
             let res: User = data.unwrap();
             println!("Welcome back {}! You currently have ${}", res.name, res.balance);
+            start_game(&res);
         } else {
             println!("Sorry, something is wrong with your savegame!");
         }
@@ -73,9 +74,16 @@ fn main() {
             Ok(_) => println!("\nWell {}... We've added $100 to your account so you can get started, best of luck!", data.name),
         }
 
+        // Start Game
+        start_game(&data);
+
 
     }
 
+}
+
+fn start_game(user_info: &User) {
+    println!("{:?}", user_info);
 }
 
 fn clear_console() {
