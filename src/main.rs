@@ -99,6 +99,12 @@ impl Game {
     fn render(&mut self, args: &RenderArgs) {
         use graphics::*;
 
+        let BLURPLE: [f32; 4] = [0.447, 0.537, 0.854, 1.0];
+
+        self.gl.draw(arg.viewport(), |_c, gl| {
+            graphics::clear(BLURPLE, gl);
+        });
+
     }
 
     fn update(&mut self) {
