@@ -22,6 +22,12 @@ struct User {
 
 fn main() {
 
+    // Clear terminal on startup
+    let output = Command::new("clear").output().unwrap_or_else(|e| {
+        panic!("failed to execute process: {}", e)
+    });
+    println!("{}", String::from_utf8_lossy(&output.stdout));
+
     // Create File Path
     let path = Path::new(DATA_PATH);
     let display = path.display();
