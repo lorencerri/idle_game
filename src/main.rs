@@ -44,7 +44,7 @@ fn main() {
         // Check if parsed correctly
         if data.is_ok() {
             let res: User = data.unwrap();
-            println!("Welcome back {}! You currently have ${}", res.name, res.balance);
+            println!("Welcome back to Rust Idler!");
             start_game(&res);
         } else {
             println!("Sorry, something is wrong with your savegame!");
@@ -83,7 +83,12 @@ fn main() {
 }
 
 fn start_game(user_info: &User) {
-    println!("{:?}", user_info);
+    println!(""); // Add Line Space
+
+    // Print Information
+    println!("Name: {}", user_info.name);
+    println!("Balance: ${}", user_info.balance);
+
 }
 
 fn clear_console() {
