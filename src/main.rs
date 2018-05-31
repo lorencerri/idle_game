@@ -2,6 +2,10 @@ extern crate serde_json;
 extern crate serde;
 #[macro_use]
 extern crate serde_derive;
+extern crate piston;
+extern crate graphics;
+extern crate glutin_window;
+extern crate opengl_graphics;
 
 use std::process::Command;
 use std::error::Error;
@@ -9,6 +13,11 @@ use std::io;
 use std::io::prelude::*;
 use std::fs::File;
 use std::path::Path;
+use piston::window::WindowSettings;
+use piston::event_loop::*;
+use piston::input::*;
+use glutin_window::GlutinWindow;
+use opengl_graphics::{ GlGraphics, OpenGL };
 
 // Static Variables
 static DATA_PATH: &'static str = "data.json";
@@ -18,6 +27,10 @@ static DATA_PATH: &'static str = "data.json";
 struct User {
     name: String,
     balance: i64,
+}
+
+struct Game {
+    gl: GlGraphics,
 }
 
 fn main() {
@@ -82,12 +95,62 @@ fn main() {
 
 }
 
+impl Game {
+    fn render(&mut self, args: &RenderArgs) {
+        use graphics::*;
+
+    }
+
+    fn update(&mut self) {
+
+    }
+
+    fn pressed(&mut self, btn: &Button) {
+
+    }
+
+}
+
 fn start_game(user_info: &User) {
     println!(""); // Add Line Space
 
     // Print Information
     println!("Name: {}", user_info.name);
     println!("Balance: ${}", user_info.balance);
+
+    // Create Display
+    let opengl = OpenGL::V3_2;
+
+    let mut window: GlutinWindow = WindowSettings::new(
+        "Rust Idler",
+        [1920, 1080]
+    ).opengl(opengl)
+        .exit_on_esc(true)
+        .build()
+        .unwrap();
+
+    let mut game = Game {
+        gl: GlGraphics::new(opengl)
+    };
+
+    let mut events = Events::new(EventSettings::new()).ups(10);
+    while let Some(e) = events.next(&mut window) {
+
+        if let Some(r) = e.render_args() {
+            game.render(&r);
+        }
+
+        if let Some(u) = e.update_args() {
+            game.update();
+        }
+
+        if let Some(k) = e.button_args() {
+            if k.state == ButtonState::Press {
+                game.pressed(&k.button);
+            }
+        }
+
+    }
 
 }
 
